@@ -11,10 +11,25 @@ return [
     | reset options for your application. You may change these defaults
     | as required, but they're a perfect start for most applications.
     |
+    // Make array 
+
+    
+    [
+     "user"=>[
+        "id"=1,
+        "name"=>"khiro"
+     ]   ,
+     "admin"=>[
+        "id"=1,
+        "name"=>"khiro"
+     ] 
+    ]
     */
 
+
+
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'web',  //use to difine all thinks
         'passwords' => 'users',
     ],
 
@@ -40,6 +55,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'lab' => [
+            'driver' => 'session',
+            'provider' => 'Labs',
+        ],
     ],
 
     /*
@@ -63,6 +82,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'labs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Lab::class,
         ],
 
         // 'users' => [
@@ -94,6 +117,12 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'labs' => [
+            'provider' => 'Labs',
+            'table' => 'Labs_password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],

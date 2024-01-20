@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Analyse extends Model
+class Lab extends Model
 {
+    
     use HasFactory;
-    protected $table = "analyse";
-    public function lab() {
-        return $this->belongsTo(Lab::class);
+    protected $table = "labs";
+    public function analyses() {
+        return $this->hasMany(Analyse::class);
     }
 }
