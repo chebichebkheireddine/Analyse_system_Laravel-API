@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Analyse extends Model
 {
     use HasFactory;
-    protected $table = "analyse";
+    public $timestamps = false;
+    protected $table = "analyses";
     public function lab() {
         return $this->belongsTo(Lab::class);
     }
