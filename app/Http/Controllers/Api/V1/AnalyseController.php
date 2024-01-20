@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Analyse;
 use App\Http\Requests\StoreAnalyseRequest;
 use App\Http\Requests\UpdateAnalyseRequest;
@@ -14,6 +15,7 @@ class AnalyseController extends Controller
     public function index()
     {
         //
+        return Analyse::all();
     }
 
     /**

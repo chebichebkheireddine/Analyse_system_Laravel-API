@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Models\Lab;
 use App\Http\Requests\StoreLabRequest;
 use App\Http\Requests\UpdateLabRequest;
@@ -13,7 +14,8 @@ class LabController extends Controller
      */
     public function index()
     {
-        //
+        //this is to call reqest to do it in good why
+        return Lab::all();
     }
 
     /**
@@ -36,8 +38,9 @@ class LabController extends Controller
      * Display the specified resource.
      */
     public function show(Lab $lab)
-    {
+    { 
         //
+
     }
 
     /**
@@ -46,6 +49,7 @@ class LabController extends Controller
     public function edit(Lab $lab)
     {
         //
+        return $lab;
     }
 
     /**
