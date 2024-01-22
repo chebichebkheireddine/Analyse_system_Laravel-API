@@ -12,8 +12,15 @@ class LabResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray(Request $request)
     {
-        return parent::toArray($request);
+        return [
+            "id"=>$this->id_lab,
+            "NameLab"=>$this->name_lab,
+            "Email"=>$this->Email,
+            "Passeord"=>$this->password,
+            "Address"=>$this->Address,
+            "Phone"=>$this->tlpn,
+        ];
     }
 }
