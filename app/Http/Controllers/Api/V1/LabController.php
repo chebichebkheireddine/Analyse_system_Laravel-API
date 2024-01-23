@@ -17,16 +17,28 @@ class LabController extends Controller
      */
     public function index(Request $request)
     {
-        $filter=new LabsQuery();
-        $queryItem=$filter->transform($request);
-        if (count($queryItem)==0) {
-            return new LabCollection(Lab::all());
-        }else{
+        // $filter=new LabsQuery();
+        // $queryItem=$filter->transform($request);
+        // if (count($queryItem)==0) {
+        //     return new LabCollection(Lab::all());
+        // }else{
 
-            return new LabCollection(Lab::where($queryItem));
+        //     return new LabCollection(Lab::where($queryItem));
 
+        // }
+        // //this is to call reqest to do it in good why
+        $filter = new LabsQuery();
+        $queryItem = $filter->transform($request);
+
+        $labs = Lab::query();
+
+        if (!empty($queryItem)) {
+            $labs->where($queryItem);
         }
-        //this is to call reqest to do it in good why
+
+        $labCollection = new LabCollection($labs->get());
+
+        return $labCollection;
     }
 
     /**
