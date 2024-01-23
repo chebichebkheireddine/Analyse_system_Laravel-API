@@ -17,6 +17,7 @@ class LabController extends Controller
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         // $filter=new LabsQuery();
         // $queryItem=$filter->transform($request);
         // if (count($queryItem)==0) {
@@ -39,6 +40,18 @@ class LabController extends Controller
         $labCollection = new LabCollection($labs->get());
 
         return $labCollection;
+=======
+        $filter=new LabsQuery();
+        $queryItem=$filter->transform($request);
+        if (count($queryItem)==0) {
+            return new LabCollection(Lab::all());
+        }else{
+
+            return new LabCollection(Lab::where($queryItem));
+
+        }
+        //this is to call reqest to do it in good why
+>>>>>>> 76e0c366840a1950ea1de99a7d03d6a7a74bd19e
     }
 
     /**
