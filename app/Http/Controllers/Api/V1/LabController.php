@@ -1,19 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\LabCollection;
+use App\Services\V1\LabsQuery;
 use App\Models\Lab;
 use App\Http\Requests\StoreLabRequest;
 use App\Http\Requests\UpdateLabRequest;
+use Illuminate\Http\Request;
 
 class LabController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $filter=new LabsQuery();
+        $queryItem=$filter->transform($request);
+        if (count($queryItem)==0) {
+            return new LabCollection(Lab::all());
+        }else{
+
+            return new LabCollection(Lab::where($queryItem));
+
+        }
+        //this is to call reqest to do it in good why
     }
 
     /**
@@ -36,8 +49,10 @@ class LabController extends Controller
      * Display the specified resource.
      */
     public function show(Lab $lab)
-    {
+    { 
         //
+        return $lab;
+
     }
 
     /**
