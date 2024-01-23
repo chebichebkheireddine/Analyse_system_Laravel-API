@@ -24,6 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Call router to The api
 // It be like //  api/v1
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api\V1'],function(){
-Route::apiResource('Labs\{nameLabe}',LabController::class);
+Route::apiResource('Labs',LabController::class);
 Route::apiResource('Analyses',AnalyseController::class);
 });
